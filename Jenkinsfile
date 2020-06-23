@@ -10,7 +10,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Install Dependencies') {
             steps {
                 sh 'mkdir build'
             }
@@ -22,6 +22,23 @@ pipeline {
                 }
             }
         }
+
+				stage('Build') {
+						steps {
+							sh 'cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release'
+						}
+						post {
+								success {
+									sh 'cmake --build .'
+								}
+						}
+				}
+				
+				stage('Test'){
+						steps {
+							sh './bin/md5'
+						}
+				}
 
         stage('Nexus IQ Scan'){
             steps {
