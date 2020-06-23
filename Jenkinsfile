@@ -17,8 +17,7 @@ pipeline {
             post {
                 success {
                     echo 'Now installing dependencies...'
-                    sh 'cd build'
-										sh 'conan install ..'
+                    sh 'cd build && conan install ..'
 
                 }
             }
