@@ -6,6 +6,7 @@ pipeline {
         DEV_REPO = 'conan-releases'
         TAG_FILE = "${WORKSPACE}/tag.json"
         IQ_SCAN_URL = ""
+				ARTEFACT_NAME="md5"
     }
 
     stages {
@@ -79,7 +80,7 @@ pipeline {
                     tagdata.buildId = "${BUILD_ID}" as String
                     tagdata.buildJob = "${JOB_NAME}" as String
                     tagdata.buildTag = "${BUILD_TAG}" as String
-                    //tagdata.appVersion = "${BUILD_VERSION}" as String
+                    tagdata.appVersion = "${BUILD_VERSION}" as String
                     tagdata.buildUrl = "${BUILD_URL}" as String
                     //tagdata.iqScanUrl = "${IQ_SCAN_URL}" as String
                     //tagData.promote = "no" as String
@@ -102,7 +103,7 @@ pipeline {
         stage('Upload to Nexus Repository'){
             steps {
                 script {
-                    nexusPublisher nexusInstanceId: 'nxrm3', nexusRepositoryId: "${DEV_REPO}", packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: 'war', filePath: "${ARTEFACT_NAME}"]], mavenCoordinate: [artifactId: 'WebGoat', groupId: 'org.demo', packaging: 'war', version: "${BUILD_VERSION}"]]], tagName: "${BUILD_TAG}"
+									sh 'curl curl -v -u admin:admin123 --upload-file ./bin/${ARTEFACT_NAME} http://localhost:8081/repository/conan-releases/${ARTEFACT_NAME}/${BUILD_VERSION}/${ARTEFACT_NAME}'
                 }
             }
         }
