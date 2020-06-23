@@ -1,0 +1,117 @@
+{
+  "applicationId" : "md5app",
+  "scanId" : "486503ef77cd48af8a835656d76f2d1a",
+  "reportHtmlUrl" : "http://localhost:8070/ui/links/application/md5app/report/486503ef77cd48af8a835656d76f2d1a",
+  "reportPdfUrl" : "http://localhost:8070/ui/links/application/md5app/report/486503ef77cd48af8a835656d76f2d1a/pdf",
+  "reportDataUrl" : "http://localhost:8070/api/v2/applications/md5app/reports/486503ef77cd48af8a835656d76f2d1a/raw",
+  "policyAction" : "None",
+  "policyEvaluationResult" : {
+    "alerts" : [ {
+      "trigger" : {
+        "policyId" : "0563032472e44857a21b6c4a3a27a761",
+        "policyName" : "Architecture-Quality",
+        "threatLevel" : 1,
+        "policyViolationId" : "0caaf726eddf45beabcfaf832732fd2e",
+        "componentFacts" : [ {
+          "componentIdentifier" : {
+            "format" : "conan",
+            "coordinates" : {
+              "name" : "poco",
+              "version" : "1.9.3"
+            }
+          },
+          "hash" : "eb317a4de6392ea7c2f6",
+          "constraintFacts" : [ {
+            "constraintId" : "ba90924ee3fb48c6abea39d5e81dde2c",
+            "constraintName" : "Version is old",
+            "operatorName" : "OR",
+            "conditionFacts" : [ {
+              "conditionTypeId" : "AgeInDays",
+              "conditionIndex" : 0,
+              "summary" : "Age older than 1825 days",
+              "reason" : "Found component older than 5 years",
+              "reference" : null,
+              "triggerJson" : null
+            } ]
+          } ],
+          "pathnames" : [ ],
+          "displayName" : {
+            "parts" : [ {
+              "field" : "name",
+              "value" : "poco"
+            }, {
+              "value" : " : "
+            }, {
+              "field" : "version",
+              "value" : "1.9.3"
+            } ]
+          }
+        } ]
+      },
+      "actions" : [ ]
+    }, {
+      "trigger" : {
+        "policyId" : "0563032472e44857a21b6c4a3a27a761",
+        "policyName" : "Architecture-Quality",
+        "threatLevel" : 1,
+        "policyViolationId" : "cbc9a63f7bf84568b5b294f9afeccffc",
+        "componentFacts" : [ {
+          "componentIdentifier" : {
+            "format" : "conan",
+            "coordinates" : {
+              "channel" : "stable",
+              "name" : "zlib",
+              "owner" : "conan",
+              "version" : "1.2.11"
+            }
+          },
+          "hash" : "668a264d43f8cbf5b51e",
+          "constraintFacts" : [ {
+            "constraintId" : "ba90924ee3fb48c6abea39d5e81dde2c",
+            "constraintName" : "Version is old",
+            "operatorName" : "OR",
+            "conditionFacts" : [ {
+              "conditionTypeId" : "AgeInDays",
+              "conditionIndex" : 0,
+              "summary" : "Age older than 1825 days",
+              "reason" : "Found component older than 5 years",
+              "reference" : null,
+              "triggerJson" : null
+            } ]
+          } ],
+          "pathnames" : [ ],
+          "displayName" : {
+            "parts" : [ {
+              "field" : "channel",
+              "value" : "stable"
+            }, {
+              "value" : " : "
+            }, {
+              "field" : "name",
+              "value" : "zlib"
+            }, {
+              "value" : " : "
+            }, {
+              "field" : "owner",
+              "value" : "conan"
+            }, {
+              "value" : " : "
+            }, {
+              "field" : "version",
+              "value" : "1.2.11"
+            } ]
+          }
+        } ]
+      },
+      "actions" : [ ]
+    } ],
+    "affectedComponentCount" : 0,
+    "criticalComponentCount" : 0,
+    "severeComponentCount" : 0,
+    "moderateComponentCount" : 0,
+    "criticalPolicyViolationCount" : 0,
+    "severePolicyViolationCount" : 0,
+    "moderatePolicyViolationCount" : 0,
+    "grandfatheredPolicyViolationCount" : 0
+  }
+}
