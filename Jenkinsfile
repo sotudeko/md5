@@ -85,7 +85,6 @@ pipeline {
                     //tagData.promote = "no" as String
 
                     writeJSON(file: "${TAG_FILE}", json: tagdata, pretty: 4)
-                    sh 'echo tag_file: && cat ${TAG_FILE}'
 
                     createTag nexusInstanceId: 'nxrm3', tagAttributesPath: "${TAG_FILE}", tagName: "${BUILD_TAG}"
 
@@ -95,7 +94,7 @@ pipeline {
             }
 						post {
 							success {
-								sh 'cat 
+              	sh 'echo tag_file: && cat ${TAG_FILE}'
 							}
 						}
         }
