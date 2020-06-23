@@ -79,13 +79,13 @@ pipeline {
                     tagdata.buildId = "${BUILD_ID}" as String
                     tagdata.buildJob = "${JOB_NAME}" as String
                     tagdata.buildTag = "${BUILD_TAG}" as String
-                    tagdata.appVersion = "${BUILD_VERSION}" as String
+                    //tagdata.appVersion = "${BUILD_VERSION}" as String
                     tagdata.buildUrl = "${BUILD_URL}" as String
-                    tagdata.iqScanUrl = "${IQ_SCAN_URL}" as String
+                    //tagdata.iqScanUrl = "${IQ_SCAN_URL}" as String
                     //tagData.promote = "no" as String
 
                     writeJSON(file: "${TAG_FILE}", json: tagdata, pretty: 4)
-                    sh 'cat ${TAG_FILE}'
+                    sh 'echo tag_file: && cat ${TAG_FILE}'
 
                     createTag nexusInstanceId: 'nxrm3', tagAttributesPath: "${TAG_FILE}", tagName: "${BUILD_TAG}"
 
@@ -93,6 +93,11 @@ pipeline {
                     rtp abortedAsStable: false, failedAsStable: false, parserName: 'Confluence', stableText: "Nexus Repository Tag: ${BUILD_TAG}", unstableAsStable: true 
                 }
             }
+						post {
+							success {
+								sh 'cat 
+							}
+						}
         }
 
         stage('Upload to Nexus Repository'){
