@@ -23,24 +23,26 @@ pipeline {
         }
 
 		stage('Build') {
-			dir("./build"){
 				steps {
-					sh 'cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release'
+					dir("./build"){
+						sh 'cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release'
+					}
 				}
 				post {
 					success {
-						sh 'cmake --build .'
+						dir("./build"){
+							sh 'cmake --build .'
+						}
 					}
 				}
-			}
 		}
 				
 		stage('Test'){
-			dir("./build"){
 				steps {
-					sh './bin/md5'
+					dir("./build"){
+						sh './bin/md5'
+					}
 				}
-			}
 		}
 
         stage('Nexus IQ Scan'){
