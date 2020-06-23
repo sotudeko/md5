@@ -3,8 +3,7 @@ pipeline {
     agent any
 
     environment {
-        ARTEFACT_NAME = "${WORKSPACE}/target/WebGoat-${BUILD_VERSION}.war"
-        DEV_REPO = 'staging-development'
+        DEV_REPO = 'conan-hosted'
         TAG_FILE = "${WORKSPACE}/tag.json"
         IQ_SCAN_URL = ""
     }
@@ -23,29 +22,32 @@ pipeline {
             }
         }
 
-				stage('Build') {
-						steps {
-							sh 'cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release'
-						}
-						post {
-								success {
-									sh 'cmake --build .'
-								}
-						}
+		stage('Build') {
+			dir("./build"){
+				steps {
+					sh 'cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release'
 				}
+				post {
+					success {
+						sh 'cmake --build .'
+					}
+				}
+			}
+		}
 				
-				stage('Test'){
-						steps {
-							sh './bin/md5'
-						}
+		stage('Test'){
+			dir("./build"){
+				steps {
+					sh './bin/md5'
 				}
+			}
+		}
 
         stage('Nexus IQ Scan'){
             steps {
                 script{
-                    sh 'pwd'
                     try {
-                        def policyEvaluation = nexusPolicyEvaluation failBuildOnNetworkError: true, iqApplication: selectedApplication('md5app'), iqScanPatterns: [[scanPattern: '**/*.war']], iqStage: 'build', jobCredentialsId: 'admin'
+                        def policyEvaluation = nexusPolicyEvaluation failBuildOnNetworkError: true, iqApplication: selectedApplication('md5app'), iqStage: 'build', jobCredentialsId: 'admin'
                         echo "Nexus IQ scan succeeded: ${policyEvaluation.applicationCompositionReportUrl}"
                         IQ_SCAN_URL = "${policyEvaluation.applicationCompositionReportUrl}"
                     } 
