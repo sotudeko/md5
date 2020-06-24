@@ -103,7 +103,7 @@ pipeline {
         stage('Upload to Nexus Repository'){
             steps {
                 script {
-									sh 'curl -v -u admin:admin123 --upload-file ./build/bin/${ARTEFACT_NAME} http://localhost:8081/repository/${DEV_REPO}/${ARTEFACT_NAME}-${BUILD_VERSION}'
+									sh 'curl -v -u admin:admin123 --upload-file ./build/bin/${ARTEFACT_NAME} http://localhost:8081/repository/${DEV_REPO}/${ARTEFACT_NAME}/${BUILD_VERSION}/${ARTEFACT_NAME}'
                 }
             }
         }
