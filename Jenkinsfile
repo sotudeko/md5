@@ -49,7 +49,18 @@ pipeline {
         stage('Nexus IQ Scan'){
             steps {
                 script{
-                    sh 'ansible-playbook /Users/sotudeko/Development/mygithub/nx-ansible/playbooks/nxiq-scan.yml --extra-vars "application=md5app-ans target=${WORKSPACE}/conanfile.txt stage=build"'
+                    try {
+                        def policyEvaluation = nexusPolicyEvaluation failBuildOnNetworkError: true, iqApplication: selectedApplication('md5app'), iqScanPatterns: [[scanPattern: '**/*']], iqStage: 'build', jobCredentialsId: 'admin'
+                        //def policyEvaluation = nexusPolicyEvaluation failBuildOnNetworkError: true, iqApplication: selectedApplication('md5app'), iqScanPatterns: [[scanPattern: 'conanfile.txt']], iqStage: 'build', jobCredentialsId: 'admin'
+
+                        echo "Nexus IQ scan succeeded: ${policyEvaluation.applicationCompositionReportUrl}"
+                        IQ_SCAN_URL = "${policyEvaluation.applicationCompositionReportUrl}"
+                    } 
+                    catch (error) {
+                        def policyEvaluation = error.policyEvaluation
+                        echo "Nexus IQ scan vulnerabilities detected', ${policyEvaluation.applicationCompositionReportUrl}"
+                        throw error
+                    }
                 }
             }
         }
@@ -94,7 +105,7 @@ pipeline {
         stage('Upload to Nexus Repository'){
             steps {
                 script {
-					sh 'curl -v -u admin:admin123 --upload-file ./build/bin/${ARTEFACT_NAME} http://localhost:8081/repository/${DEV_REPO}/${ARTEFACT_NAME}/${BUILD_VERSION}/${ARTEFACT_NAME}'
+									sh 'curl -v -u admin:admin123 --upload-file ./build/bin/${ARTEFACT_NAME} http://localhost:8081/repository/${DEV_REPO}/${ARTEFACT_NAME}/${BUILD_VERSION}/${ARTEFACT_NAME}'
                 }
             }
         }
