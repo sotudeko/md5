@@ -50,7 +50,7 @@ pipeline {
             steps {
                 script{
                     try {
-                        def policyEvaluation = nexusPolicyEvaluation failBuildOnNetworkError: true, iqApplication: selectedApplication('md5app'), iqScanPatterns: [[scanPattern: 'conanfile.txt']], iqStage: 'build', jobCredentialsId: 'admin'
+                        def policyEvaluation = nexusPolicyEvaluation failBuildOnNetworkError: true, iqApplication: selectedApplication('md5app'), iqScanPatterns: [[scanPattern: '**/*']], iqStage: 'build', jobCredentialsId: 'admin'
                         echo "Nexus IQ scan succeeded: ${policyEvaluation.applicationCompositionReportUrl}"
                         IQ_SCAN_URL = "${policyEvaluation.applicationCompositionReportUrl}"
                     } 

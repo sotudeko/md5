@@ -1,9 +1,9 @@
 {
-  "applicationId" : "md5app",
-  "scanId" : "25a74d3df0ab49b585824eeb66ef4403",
-  "reportHtmlUrl" : "http://localhost:8070/ui/links/application/md5app/report/25a74d3df0ab49b585824eeb66ef4403",
-  "reportPdfUrl" : "http://localhost:8070/ui/links/application/md5app/report/25a74d3df0ab49b585824eeb66ef4403/pdf",
-  "reportDataUrl" : "http://localhost:8070/api/v2/applications/md5app/reports/25a74d3df0ab49b585824eeb66ef4403/raw",
+  "applicationId" : "md5app2",
+  "scanId" : "1e6d00873a5a4be4811e2f5ed65fc34d",
+  "reportHtmlUrl" : "http://localhost:8070/ui/links/application/md5app2/report/1e6d00873a5a4be4811e2f5ed65fc34d",
+  "reportPdfUrl" : "http://localhost:8070/ui/links/application/md5app2/report/1e6d00873a5a4be4811e2f5ed65fc34d/pdf",
+  "reportDataUrl" : "http://localhost:8070/api/v2/applications/md5app2/reports/1e6d00873a5a4be4811e2f5ed65fc34d/raw",
   "policyAction" : "None",
   "policyEvaluationResult" : {
     "alerts" : [ {
@@ -11,7 +11,7 @@
         "policyId" : "0563032472e44857a21b6c4a3a27a761",
         "policyName" : "Architecture-Quality",
         "threatLevel" : 1,
-        "policyViolationId" : "6e1e1f2728ec4850b30e798b2a9da6c8",
+        "policyViolationId" : "e60f14aad3a547cdb5c9b50a27c008f1",
         "componentFacts" : [ {
           "componentIdentifier" : {
             "format" : "conan",
@@ -54,7 +54,7 @@
         "policyId" : "715b2d3144e84741a3fecdff83da79ae",
         "policyName" : "Security-Critical",
         "threatLevel" : 10,
-        "policyViolationId" : "34e96397ae17402189d72dc11393d1a4",
+        "policyViolationId" : "3f037a9759bd4a2f9017f4178a5cf489",
         "componentFacts" : [ {
           "componentIdentifier" : {
             "format" : "conan",
@@ -100,7 +100,7 @@
         "policyId" : "715b2d3144e84741a3fecdff83da79ae",
         "policyName" : "Security-Critical",
         "threatLevel" : 10,
-        "policyViolationId" : "b247fd1b39f64b06bf02e80f345cc80f",
+        "policyViolationId" : "26a5f73155c643f49ddcc402ed3e4464",
         "componentFacts" : [ {
           "componentIdentifier" : {
             "format" : "conan",
@@ -146,7 +146,7 @@
         "policyId" : "8c50a40fd58242fdb9e671e614e057ea",
         "policyName" : "Security-High",
         "threatLevel" : 9,
-        "policyViolationId" : "d6e8384591ec4d0aaafe3de0fd98aedc",
+        "policyViolationId" : "a1998126d0364b49a1d2ad94824ca998",
         "componentFacts" : [ {
           "componentIdentifier" : {
             "format" : "conan",
@@ -202,7 +202,7 @@
         "policyId" : "8c50a40fd58242fdb9e671e614e057ea",
         "policyName" : "Security-High",
         "threatLevel" : 9,
-        "policyViolationId" : "6fa06f9aef6e4054b8d233e6e36151e9",
+        "policyViolationId" : "48a26672c14d415c9480f4a272dfb702",
         "componentFacts" : [ {
           "componentIdentifier" : {
             "format" : "conan",
