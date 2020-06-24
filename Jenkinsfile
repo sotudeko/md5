@@ -49,7 +49,7 @@ pipeline {
         stage('Nexus IQ Scan'){
             steps {
                 script{
-                    sh 'ansible-playbook /Users/sotudeko/Development/mygithub/nx-ansible/playbooks/nxiq-scan.yml --extra-vars "application=md5app-ans target=conanfile.txt stage=build"'
+                    sh 'ansible-playbook /Users/sotudeko/Development/mygithub/nx-ansible/playbooks/nxiq-scan.yml --extra-vars "application=md5app-ans target=${WORKSPACE}/conanfile.txt stage=build"'
                 }
             }
         }
