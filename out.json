@@ -1,9 +1,9 @@
 {
   "applicationId" : "md5app",
-  "scanId" : "bcd8731f099a47ada53a2f6d71e38737",
-  "reportHtmlUrl" : "http://localhost:8070/ui/links/application/md5app/report/bcd8731f099a47ada53a2f6d71e38737",
-  "reportPdfUrl" : "http://localhost:8070/ui/links/application/md5app/report/bcd8731f099a47ada53a2f6d71e38737/pdf",
-  "reportDataUrl" : "http://localhost:8070/api/v2/applications/md5app/reports/bcd8731f099a47ada53a2f6d71e38737/raw",
+  "scanId" : "25a74d3df0ab49b585824eeb66ef4403",
+  "reportHtmlUrl" : "http://localhost:8070/ui/links/application/md5app/report/25a74d3df0ab49b585824eeb66ef4403",
+  "reportPdfUrl" : "http://localhost:8070/ui/links/application/md5app/report/25a74d3df0ab49b585824eeb66ef4403/pdf",
+  "reportDataUrl" : "http://localhost:8070/api/v2/applications/md5app/reports/25a74d3df0ab49b585824eeb66ef4403/raw",
   "policyAction" : "None",
   "policyEvaluationResult" : {
     "alerts" : [ {
@@ -11,18 +11,16 @@
         "policyId" : "0563032472e44857a21b6c4a3a27a761",
         "policyName" : "Architecture-Quality",
         "threatLevel" : 1,
-        "policyViolationId" : "f611aa188792429c9cb25164cb4e20e8",
+        "policyViolationId" : "6e1e1f2728ec4850b30e798b2a9da6c8",
         "componentFacts" : [ {
           "componentIdentifier" : {
             "format" : "conan",
             "coordinates" : {
-              "channel" : "stable",
               "name" : "zlib",
-              "owner" : "conan",
-              "version" : "1.2.0"
+              "version" : "1.2.8"
             }
           },
-          "hash" : "6148d03ec9c192ac66ed",
+          "hash" : "d53b9e0ac3d05b85d4a0",
           "constraintFacts" : [ {
             "constraintId" : "ba90924ee3fb48c6abea39d5e81dde2c",
             "constraintName" : "Version is old",
@@ -39,23 +37,105 @@
           "pathnames" : [ ],
           "displayName" : {
             "parts" : [ {
-              "field" : "channel",
-              "value" : "stable"
-            }, {
-              "value" : " : "
-            }, {
               "field" : "name",
               "value" : "zlib"
             }, {
               "value" : " : "
             }, {
-              "field" : "owner",
-              "value" : "conan"
+              "field" : "version",
+              "value" : "1.2.8"
+            } ]
+          }
+        } ]
+      },
+      "actions" : [ ]
+    }, {
+      "trigger" : {
+        "policyId" : "715b2d3144e84741a3fecdff83da79ae",
+        "policyName" : "Security-Critical",
+        "threatLevel" : 10,
+        "policyViolationId" : "34e96397ae17402189d72dc11393d1a4",
+        "componentFacts" : [ {
+          "componentIdentifier" : {
+            "format" : "conan",
+            "coordinates" : {
+              "name" : "zlib",
+              "version" : "1.2.8"
+            }
+          },
+          "hash" : "d53b9e0ac3d05b85d4a0",
+          "constraintFacts" : [ {
+            "constraintId" : "1f3090e8c9314351a04351c76a9beebf",
+            "constraintName" : "Critical risk CVSS score",
+            "operatorName" : "AND",
+            "conditionFacts" : [ {
+              "conditionTypeId" : "SecurityVulnerabilitySeverity",
+              "conditionIndex" : 0,
+              "summary" : "Security Vulnerability Severity >= 9",
+              "reason" : "Found security vulnerability CVE-2016-9841 with severity >= 9 (severity = 9.8)",
+              "reference" : {
+                "value" : "CVE-2016-9841",
+                "type" : "SECURITY_VULNERABILITY_REFID"
+              },
+              "triggerJson" : null
+            } ]
+          } ],
+          "pathnames" : [ ],
+          "displayName" : {
+            "parts" : [ {
+              "field" : "name",
+              "value" : "zlib"
             }, {
               "value" : " : "
             }, {
               "field" : "version",
-              "value" : "1.2.0"
+              "value" : "1.2.8"
+            } ]
+          }
+        } ]
+      },
+      "actions" : [ ]
+    }, {
+      "trigger" : {
+        "policyId" : "715b2d3144e84741a3fecdff83da79ae",
+        "policyName" : "Security-Critical",
+        "threatLevel" : 10,
+        "policyViolationId" : "b247fd1b39f64b06bf02e80f345cc80f",
+        "componentFacts" : [ {
+          "componentIdentifier" : {
+            "format" : "conan",
+            "coordinates" : {
+              "name" : "zlib",
+              "version" : "1.2.8"
+            }
+          },
+          "hash" : "d53b9e0ac3d05b85d4a0",
+          "constraintFacts" : [ {
+            "constraintId" : "1f3090e8c9314351a04351c76a9beebf",
+            "constraintName" : "Critical risk CVSS score",
+            "operatorName" : "AND",
+            "conditionFacts" : [ {
+              "conditionTypeId" : "SecurityVulnerabilitySeverity",
+              "conditionIndex" : 0,
+              "summary" : "Security Vulnerability Severity >= 9",
+              "reason" : "Found security vulnerability CVE-2016-9843 with severity >= 9 (severity = 9.8)",
+              "reference" : {
+                "value" : "CVE-2016-9843",
+                "type" : "SECURITY_VULNERABILITY_REFID"
+              },
+              "triggerJson" : null
+            } ]
+          } ],
+          "pathnames" : [ ],
+          "displayName" : {
+            "parts" : [ {
+              "field" : "name",
+              "value" : "zlib"
+            }, {
+              "value" : " : "
+            }, {
+              "field" : "version",
+              "value" : "1.2.8"
             } ]
           }
         } ]
@@ -66,18 +146,16 @@
         "policyId" : "8c50a40fd58242fdb9e671e614e057ea",
         "policyName" : "Security-High",
         "threatLevel" : 9,
-        "policyViolationId" : "6500894492bb4e01b2f5ba7f703c25e5",
+        "policyViolationId" : "d6e8384591ec4d0aaafe3de0fd98aedc",
         "componentFacts" : [ {
           "componentIdentifier" : {
             "format" : "conan",
             "coordinates" : {
-              "channel" : "stable",
               "name" : "zlib",
-              "owner" : "conan",
-              "version" : "1.2.0"
+              "version" : "1.2.8"
             }
           },
-          "hash" : "6148d03ec9c192ac66ed",
+          "hash" : "d53b9e0ac3d05b85d4a0",
           "constraintFacts" : [ {
             "constraintId" : "9a8b71c060d3409e878d84e9804cf651",
             "constraintName" : "High risk CVSS score",
@@ -86,9 +164,9 @@
               "conditionTypeId" : "SecurityVulnerabilitySeverity",
               "conditionIndex" : 0,
               "summary" : "Security Vulnerability Severity >= 7",
-              "reason" : "Found security vulnerability CVE-2005-2096 with severity >= 7 (severity = 7.5)",
+              "reason" : "Found security vulnerability CVE-2016-9840 with severity >= 7 (severity = 8.8)",
               "reference" : {
-                "value" : "CVE-2005-2096",
+                "value" : "CVE-2016-9840",
                 "type" : "SECURITY_VULNERABILITY_REFID"
               },
               "triggerJson" : null
@@ -96,9 +174,9 @@
               "conditionTypeId" : "SecurityVulnerabilitySeverity",
               "conditionIndex" : 0,
               "summary" : "Security Vulnerability Severity < 9",
-              "reason" : "Found security vulnerability CVE-2005-2096 with severity < 9 (severity = 7.5)",
+              "reason" : "Found security vulnerability CVE-2016-9840 with severity < 9 (severity = 8.8)",
               "reference" : {
-                "value" : "CVE-2005-2096",
+                "value" : "CVE-2016-9840",
                 "type" : "SECURITY_VULNERABILITY_REFID"
               },
               "triggerJson" : null
@@ -107,23 +185,69 @@
           "pathnames" : [ ],
           "displayName" : {
             "parts" : [ {
-              "field" : "channel",
-              "value" : "stable"
-            }, {
-              "value" : " : "
-            }, {
               "field" : "name",
               "value" : "zlib"
             }, {
               "value" : " : "
             }, {
-              "field" : "owner",
-              "value" : "conan"
+              "field" : "version",
+              "value" : "1.2.8"
+            } ]
+          }
+        } ]
+      },
+      "actions" : [ ]
+    }, {
+      "trigger" : {
+        "policyId" : "8c50a40fd58242fdb9e671e614e057ea",
+        "policyName" : "Security-High",
+        "threatLevel" : 9,
+        "policyViolationId" : "6fa06f9aef6e4054b8d233e6e36151e9",
+        "componentFacts" : [ {
+          "componentIdentifier" : {
+            "format" : "conan",
+            "coordinates" : {
+              "name" : "zlib",
+              "version" : "1.2.8"
+            }
+          },
+          "hash" : "d53b9e0ac3d05b85d4a0",
+          "constraintFacts" : [ {
+            "constraintId" : "9a8b71c060d3409e878d84e9804cf651",
+            "constraintName" : "High risk CVSS score",
+            "operatorName" : "AND",
+            "conditionFacts" : [ {
+              "conditionTypeId" : "SecurityVulnerabilitySeverity",
+              "conditionIndex" : 0,
+              "summary" : "Security Vulnerability Severity >= 7",
+              "reason" : "Found security vulnerability CVE-2016-9842 with severity >= 7 (severity = 8.8)",
+              "reference" : {
+                "value" : "CVE-2016-9842",
+                "type" : "SECURITY_VULNERABILITY_REFID"
+              },
+              "triggerJson" : null
+            }, {
+              "conditionTypeId" : "SecurityVulnerabilitySeverity",
+              "conditionIndex" : 0,
+              "summary" : "Security Vulnerability Severity < 9",
+              "reason" : "Found security vulnerability CVE-2016-9842 with severity < 9 (severity = 8.8)",
+              "reference" : {
+                "value" : "CVE-2016-9842",
+                "type" : "SECURITY_VULNERABILITY_REFID"
+              },
+              "triggerJson" : null
+            } ]
+          } ],
+          "pathnames" : [ ],
+          "displayName" : {
+            "parts" : [ {
+              "field" : "name",
+              "value" : "zlib"
             }, {
               "value" : " : "
             }, {
               "field" : "version",
-              "value" : "1.2.0"
+              "value" : "1.2.8"
             } ]
           }
         } ]
@@ -134,7 +258,7 @@
     "criticalComponentCount" : 1,
     "severeComponentCount" : 0,
     "moderateComponentCount" : 0,
-    "criticalPolicyViolationCount" : 1,
+    "criticalPolicyViolationCount" : 4,
     "severePolicyViolationCount" : 0,
     "moderatePolicyViolationCount" : 0,
     "grandfatheredPolicyViolationCount" : 0
