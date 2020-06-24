@@ -1,6 +1,6 @@
 [requires]
 poco/1.9.3
-zlib/1.2.11@conan/stable
+zlib/1.2.0@conan/stable
 
 [generators]
 cmake

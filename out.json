@@ -1,9 +1,9 @@
 {
   "applicationId" : "md5app",
-  "scanId" : "486503ef77cd48af8a835656d76f2d1a",
-  "reportHtmlUrl" : "http://localhost:8070/ui/links/application/md5app/report/486503ef77cd48af8a835656d76f2d1a",
-  "reportPdfUrl" : "http://localhost:8070/ui/links/application/md5app/report/486503ef77cd48af8a835656d76f2d1a/pdf",
-  "reportDataUrl" : "http://localhost:8070/api/v2/applications/md5app/reports/486503ef77cd48af8a835656d76f2d1a/raw",
+  "scanId" : "bcd8731f099a47ada53a2f6d71e38737",
+  "reportHtmlUrl" : "http://localhost:8070/ui/links/application/md5app/report/bcd8731f099a47ada53a2f6d71e38737",
+  "reportPdfUrl" : "http://localhost:8070/ui/links/application/md5app/report/bcd8731f099a47ada53a2f6d71e38737/pdf",
+  "reportDataUrl" : "http://localhost:8070/api/v2/applications/md5app/reports/bcd8731f099a47ada53a2f6d71e38737/raw",
   "policyAction" : "None",
   "policyEvaluationResult" : {
     "alerts" : [ {
@@ -11,50 +11,7 @@
         "policyId" : "0563032472e44857a21b6c4a3a27a761",
         "policyName" : "Architecture-Quality",
         "threatLevel" : 1,
-        "policyViolationId" : "0caaf726eddf45beabcfaf832732fd2e",
-        "componentFacts" : [ {
-          "componentIdentifier" : {
-            "format" : "conan",
-            "coordinates" : {
-              "name" : "poco",
-              "version" : "1.9.3"
-            }
-          },
-          "hash" : "eb317a4de6392ea7c2f6",
-          "constraintFacts" : [ {
-            "constraintId" : "ba90924ee3fb48c6abea39d5e81dde2c",
-            "constraintName" : "Version is old",
-            "operatorName" : "OR",
-            "conditionFacts" : [ {
-              "conditionTypeId" : "AgeInDays",
-              "conditionIndex" : 0,
-              "summary" : "Age older than 1825 days",
-              "reason" : "Found component older than 5 years",
-              "reference" : null,
-              "triggerJson" : null
-            } ]
-          } ],
-          "pathnames" : [ ],
-          "displayName" : {
-            "parts" : [ {
-              "field" : "name",
-              "value" : "poco"
-            }, {
-              "value" : " : "
-            }, {
-              "field" : "version",
-              "value" : "1.9.3"
-            } ]
-          }
-        } ]
-      },
-      "actions" : [ ]
-    }, {
-      "trigger" : {
-        "policyId" : "0563032472e44857a21b6c4a3a27a761",
-        "policyName" : "Architecture-Quality",
-        "threatLevel" : 1,
-        "policyViolationId" : "cbc9a63f7bf84568b5b294f9afeccffc",
+        "policyViolationId" : "f611aa188792429c9cb25164cb4e20e8",
         "componentFacts" : [ {
           "componentIdentifier" : {
             "format" : "conan",
@@ -62,10 +19,10 @@
               "channel" : "stable",
               "name" : "zlib",
               "owner" : "conan",
-              "version" : "1.2.11"
+              "version" : "1.2.0"
             }
           },
-          "hash" : "668a264d43f8cbf5b51e",
+          "hash" : "6148d03ec9c192ac66ed",
           "constraintFacts" : [ {
             "constraintId" : "ba90924ee3fb48c6abea39d5e81dde2c",
             "constraintName" : "Version is old",
@@ -98,18 +55,86 @@
               "value" : " : "
             }, {
               "field" : "version",
-              "value" : "1.2.11"
+              "value" : "1.2.0"
+            } ]
+          }
+        } ]
+      },
+      "actions" : [ ]
+    }, {
+      "trigger" : {
+        "policyId" : "8c50a40fd58242fdb9e671e614e057ea",
+        "policyName" : "Security-High",
+        "threatLevel" : 9,
+        "policyViolationId" : "6500894492bb4e01b2f5ba7f703c25e5",
+        "componentFacts" : [ {
+          "componentIdentifier" : {
+            "format" : "conan",
+            "coordinates" : {
+              "channel" : "stable",
+              "name" : "zlib",
+              "owner" : "conan",
+              "version" : "1.2.0"
+            }
+          },
+          "hash" : "6148d03ec9c192ac66ed",
+          "constraintFacts" : [ {
+            "constraintId" : "9a8b71c060d3409e878d84e9804cf651",
+            "constraintName" : "High risk CVSS score",
+            "operatorName" : "AND",
+            "conditionFacts" : [ {
+              "conditionTypeId" : "SecurityVulnerabilitySeverity",
+              "conditionIndex" : 0,
+              "summary" : "Security Vulnerability Severity >= 7",
+              "reason" : "Found security vulnerability CVE-2005-2096 with severity >= 7 (severity = 7.5)",
+              "reference" : {
+                "value" : "CVE-2005-2096",
+                "type" : "SECURITY_VULNERABILITY_REFID"
+              },
+              "triggerJson" : null
+            }, {
+              "conditionTypeId" : "SecurityVulnerabilitySeverity",
+              "conditionIndex" : 0,
+              "summary" : "Security Vulnerability Severity < 9",
+              "reason" : "Found security vulnerability CVE-2005-2096 with severity < 9 (severity = 7.5)",
+              "reference" : {
+                "value" : "CVE-2005-2096",
+                "type" : "SECURITY_VULNERABILITY_REFID"
+              },
+              "triggerJson" : null
+            } ]
+          } ],
+          "pathnames" : [ ],
+          "displayName" : {
+            "parts" : [ {
+              "field" : "channel",
+              "value" : "stable"
+            }, {
+              "value" : " : "
+            }, {
+              "field" : "name",
+              "value" : "zlib"
+            }, {
+              "value" : " : "
+            }, {
+              "field" : "owner",
+              "value" : "conan"
+            }, {
+              "value" : " : "
+            }, {
+              "field" : "version",
+              "value" : "1.2.0"
             } ]
           }
         } ]
       },
       "actions" : [ ]
     } ],
-    "affectedComponentCount" : 0,
-    "criticalComponentCount" : 0,
+    "affectedComponentCount" : 1,
+    "criticalComponentCount" : 1,
     "severeComponentCount" : 0,
     "moderateComponentCount" : 0,
-    "criticalPolicyViolationCount" : 0,
+    "criticalPolicyViolationCount" : 1,
     "severePolicyViolationCount" : 0,
     "moderatePolicyViolationCount" : 0,
     "grandfatheredPolicyViolationCount" : 0
