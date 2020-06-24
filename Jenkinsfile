@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        DEV_REPO = 'raw-releases'
+        DEV_REPO = 'conan-releases'
         TAG_FILE = "${WORKSPACE}/tag.json"
         IQ_SCAN_URL = ""
 				ARTEFACT_NAME="md5"
