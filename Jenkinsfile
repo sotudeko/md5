@@ -3,10 +3,11 @@ pipeline {
     agent any
 
     environment {
+        DEV_REPO_R = 'conan-releases-r'
         DEV_REPO = 'conan-releases'
         TAG_FILE = "${WORKSPACE}/tag.json"
         IQ_SCAN_URL = ""
-				ARTEFACT_NAME="md5"
+		ARTEFACT_NAME="md5"
     }
 
     stages {
@@ -16,9 +17,10 @@ pipeline {
             }
             post {
                 success {
+                    dir("./build"){
                     echo 'Now installing dependencies...'
-                    sh 'cd build && conan install ..'
-
+                    sh 'conan install ..'
+                    }
                 }
             }
         }
@@ -52,8 +54,6 @@ pipeline {
                     try {
                         def policyEvaluation = nexusPolicyEvaluation failBuildOnNetworkError: true, iqApplication: selectedApplication('md5app-demo'), iqScanPatterns: [[scanPattern: '**/*']], iqStage: 'build', jobCredentialsId: 'admin'
                         //def policyEvaluation = nexusPolicyEvaluation failBuildOnNetworkError: true, iqApplication: selectedApplication('md5app'), iqScanPatterns: [[scanPattern: 'conanfile.txt']], iqStage: 'build', jobCredentialsId: 'admin'
-
-                        echo "Nexus IQ scan succeeded: ${policyEvaluation.applicationCompositionReportUrl}"
                         IQ_SCAN_URL = "${policyEvaluation.applicationCompositionReportUrl}"
                     } 
                     catch (error) {
@@ -105,9 +105,14 @@ pipeline {
         stage('Upload to Nexus Repository'){
             steps {
                 script {
-									sh 'curl -v -u admin:admin123 --upload-file ./build/bin/${ARTEFACT_NAME} http://localhost:8081/repository/${DEV_REPO}/${ARTEFACT_NAME}/${BUILD_VERSION}/${ARTEFACT_NAME}'
-                	sh 'curl -v -u admin:admin123 --upload-file ./build/bin/${ARTEFACT_NAME} http://localhost:8081/repository/${DEV_REPO}/${ARTEFACT_NAME}'
-								}
+					sh 'curl -v -u admin:admin123 --upload-file ./build/bin/${ARTEFACT_NAME} http://localhost:8081/repository/${DEV_REPO_R}/${ARTEFACT_NAME}/${BUILD_VERSION}/${ARTEFACT_NAME}'
+                }
+            }
+            steps {
+                script {                
+                    sh 'conan create . so/MyLib'
+                    sh 'conan upload -c -r conan-releases MyLib/${BUILD_VERSION}'
+                }
             }
         }
     }
