@@ -95,11 +95,11 @@ pipeline {
                     rtp abortedAsStable: false, failedAsStable: false, parserName: 'Confluence', stableText: "Nexus Repository Tag: ${BUILD_TAG}", unstableAsStable: true 
                 }
             }
-						post {
-							success {
-              	sh 'echo tag_file: && cat ${TAG_FILE}'
-							}
-						}
+			post {
+				success {
+              	    sh 'echo tag_file: && cat ${TAG_FILE}'
+				}
+			}
         }
 
         stage('Upload to Nexus Repository'){
@@ -107,8 +107,6 @@ pipeline {
                 script {
 					sh 'curl -v -u admin:admin123 --upload-file ./build/bin/${ARTEFACT_NAME} http://localhost:8081/repository/${DEV_REPO_R}/${ARTEFACT_NAME}/${BUILD_VERSION}/${ARTEFACT_NAME}'
                 }
-            }
-            steps {
                 script {                
                     sh 'conan create . so/MyLib'
                     sh 'conan upload -c -r conan-releases MyLib/${BUILD_VERSION}'
