@@ -8,16 +8,17 @@ pipeline {
         TAG_FILE = "${WORKSPACE}/tag.json"
         IQ_SCAN_URL = ""
 		ARTEFACT_NAME="md5"
+        BUILD_DIR = "./src/build"
     }
 
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'mkdir build'
+                sh 'mkdir -p ${BUILD_DIR}'
             }
             post {
                 success {
-                    dir("./build"){
+                    dir("${BUILD_DIR}"){
                     echo 'Now installing dependencies...'
                     sh 'conan install ..'
                     }
@@ -27,13 +28,13 @@ pipeline {
 
 		stage('Build') {
 				steps {
-					dir("./build"){
+					dir("${BUILD_DIR}"){
 						sh 'cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release'
 					}
 				}
 				post {
 					success {
-						dir("./build"){
+						dir("${BUILD_DIR}"){
 							sh 'cmake --build .'
 						}
 					}
@@ -42,7 +43,7 @@ pipeline {
 				
 		stage('Test'){
 				steps {
-					dir("./build"){
+					dir("${BUILD_DIR}"){
 						sh './bin/md5'
 					}
 				}
@@ -105,7 +106,7 @@ pipeline {
         stage('Upload to Nexus Repository'){
             steps {
                 script {
-					sh 'curl -v -u admin:admin123 --upload-file ./build/bin/${ARTEFACT_NAME} http://localhost:8081/repository/${DEV_REPO_R}/${ARTEFACT_NAME}/${BUILD_VERSION}/${ARTEFACT_NAME}'
+					sh 'curl -v -u admin:admin123 --upload-file ${BUILD_DIR}/bin/${ARTEFACT_NAME} http://localhost:8081/repository/${DEV_REPO_R}/${ARTEFACT_NAME}/${BUILD_VERSION}/${ARTEFACT_NAME}'
                 }
                 script {                
                     sh 'conan create . ${ARTEFACT_NAME}/${BUILD_VERSION}'
